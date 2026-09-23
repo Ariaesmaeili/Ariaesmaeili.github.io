@@ -90,9 +90,6 @@ body {
     margin: 0 auto;
 }
 
-@media (max-width: 768px) {
-    .dual-forms { grid-template-columns: 1fr; }
-}
 
 .form-card {
     background: var(--white);
