@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت | بانک وام</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Tahoma, sans-serif; background: #f0f2f5; }
+
+        .header {
+            background: #1a237e;
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .header h1 { font-size: 20px; color: #c9a84c; }
+        .header a { color: #c9a84c; text-decoration: none; font-size: 14px; margin-right: 15px; }
+
+        .container { max-width: 1300px; margin: 25px auto; padding: 0 20px; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        .stat-box {
+            background: white;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            border-bottom: 3px solid #c9a84c;
+        }
+        .stat-box .num { font-size: 26px; font-weight: bold; color: #1a237e; }
+        .stat-box .label { font-size: 12px; color: #888; margin-top: 4px; }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            overflow-x: auto;
+        }
+        .card h2 {
+            color: #1a237e;
+            margin-bottom: 15px;
+            font-size: 17px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .badge-request { background: #fff3e0; color: #e65100; }
+        .badge-score { background: #e3f2fd; color: #1565c0; }
+        .badge-buy { background: #f3e5f5; color: #7b1fa2; }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .search-bar input, .search-bar select {
+            padding: 9px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: inherit;
+        }
+        .search-bar input { flex: 1; min-width: 200px; }
+        .search-bar button {
+            padding: 9px 20px;
+            background: #1a237e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            min-width: 800px;
+        }
+        th { background: #1a237e; color: white; padding: 10px 8px; }
+        td { padding: 8px; border-bottom: 1px solid #eee; text-align: center; }
+        tr:hover { background: #f5f5f5; }
+
+        .status-select {
+            padding: 4px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 11px;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .btn-delete {
+            background: #c62828;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .btn-delete:hover { background: #b71c1c; }
+
+        .empty { padding: 30px; text-align: center; color: #888; }
+
+        .tab-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+        .tab-btn.active {
+            background: #1a237e;
+            color: white;
+            border-color: #1a237e;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🏦 پنل مدیریت بانک وام</h1>
+        <div>
+            <a href="../index.html">🏠 سایت</a>
+            <a href="#" onclick="logout()">🚪 خروج</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- آمار -->
+        <div class="stats-grid">
+            <div class="stat-box"><div class="num" id="statSale">0</div><div class="label">وام فروشی</div></div>
+            <div class="stat-box"><div class="num" id="statRequest">0</div><div class="label">وام درخواستی</div></div>
+            <div class="stat-box"><div class="num" id="statScore">0</div><div class="label">ثبت امتیاز</div></div>
+            <div class="stat-box"><div class="num" id="statBuy">0</div><div class="label">خرید امتیاز</div></div>
+        </div>
+
+        <!-- دکمه‌های تب -->
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="showTab('sale', this)">💰 وام فروشی</button>
+            <button class="tab-btn" onclick="showTab('request', this)">📝 وام درخواستی</button>
+            <button class="tab-btn" onclick="showTab('score', this)">📊 ثبت امتیاز</button>
+            <button class="tab-btn" onclick="showTab('buy', this)">🛒 خرید امتیاز</button>
+        </div>
+
+        <!-- جستجو -->
+        <div class="card">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="🔍 جستجو بر اساس نام، کد ملی، استان یا تلفن..." oninput="renderAll()">
+                <select id="filterStatus" onchange="renderAll()">
+                    <option value="">همه وضعیت‌ها</option>
+                    <option value="در انتظار">در انتظار</option>
+                    <option value="انجام شده">انجام شده</option>
+                    <option value="لغو شده">لغو شده</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- تب وام فروشی -->
+        <div class="tab-content active" id="tab-sale">
+            <div class="card">
+                <h2>💰 وام‌های فروشی <span class="badge" id="badgeSale">0 مورد</span></h2>
+                <table>
+                    <thead><tr><th>#</th><th>نام</th><th>کد ملی</th><th>استان</th><th>مبلغ</th><th>تلفن</th><th>وضعیت</th><th>تاریخ</th><th>حذف</th></tr></thead>
+                    <tbody id="tableSale"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- تب وام درخواستی -->
+        <div class="tab-content" id="tab-request">
+            <div class="card">
+                <h2>📝 وام‌های درخواستی <span class="badge badge-request" id="badgeRequest">0 مورد</span></h2>
+                <table>
+                    <thead><tr><th>#</th><th>نام</th><th>کد ملی</th><th>مدت</th><th>استان</th><th>مبلغ</th><th>تلفن</th><th>وضعیت</th><th>تاریخ</th><th>حذف</th></tr></thead>
+                    <tbody id="tableRequest"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- تب ثبت امتیاز -->
+        <div class="tab-content" id="tab-score">
+            <div class="card">
+                <h2>📊 ثبت امتیاز <span class="badge badge-score" id="badgeScore">0 مورد</span></h2>
+                <table>
+                    <thead><tr><th>#</th><th>نام</th><th>کد ملی</th><th>تلفن</th><th>مبلغ</th><th>وضعیت</th><th>تاریخ</th><th>حذف</th></tr></thead>
+                    <tbody id="tableScore"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- تب خرید امتیاز -->
+        <div class="tab-content" id="tab-buy">
+            <div class="card">
+                <h2>🛒 خرید امتیاز <span class="badge badge-buy" id="badgeBuy">0 مورد</span></h2>
+                <table>
+                    <thead><tr><th>#</th><th>نام</th><th>کد ملی</th><th>تلفن</th><th>تعداد امتیاز</th><th>مبلغ</th><th>وضعیت</th><th>تاریخ</th><th>حذف</th></tr></thead>
+                    <tbody id="tableBuy"></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

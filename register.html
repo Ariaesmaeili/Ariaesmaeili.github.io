@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت امتیاز وام | بانک وام</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo"><h1>🏦 بانک وام</h1></div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-btn">صفحه اصلی</a>
+                <a href="about.html" class="nav-btn">درباره ما</a>
+                <a href="register.html" class="nav-btn active">ثبت امتیاز وام</a>
+                <a href="buy.html" class="nav-btn">خرید امتیاز</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1 class="page-title">📊 ثبت امتیاز وام</h1>
+        <div class="simple-page">
+            <h2>فرم ثبت امتیاز وام</h2>
+            <p>برای ثبت امتیاز وام خود، لطفاً اطلاعات زیر را تکمیل نمایید.</p>
+
+            <form onsubmit="saveScoreForm(event)">
+                <div class="form-group" style="margin-top:20px;">
+                    <label>👤 نام و نام خانوادگی</label>
+                    <input type="text" id="score-name" required>
+                </div>
+                <div class="form-group">
+                    <label>🪪 کد ملی</label>
+                    <input type="text" id="score-national" maxlength="10" required>
+                </div>
+                <div class="form-group">
+                    <label>📞 شماره تماس</label>
+                    <input type="text" id="score-phone" maxlength="11" required>
+                </div>
+                <div class="form-group">
+                    <label>💰 مبلغ وام درخواستی (تومان)</label>
+                    <input type="number" id="score-amount" required>
+                </div>
+                <button type="submit" class="submit-btn" style="margin-top:15px;">ثبت امتیاز</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-section"><h3>🏢 آدرس</h3><p>تهران، خیابان ولیعصر، برج بانک، طبقه ۱۰</p></div>
+            <div class="footer-section"><h3>📞 تماس</h3><p>تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</p><p>موبایل: ۰۹۱۲۳۴۵۶۷۸۹</p></div>
+            <div class="footer-section"><h3>⏰ ساعات کاری</h3><p>شنبه تا چهارشنبه: ۸ صبح تا ۴ بعدازظهر</p></div>
+        </div>
+        <div class="footer-bottom"><p>© ۱۴۰۳ تمامی حقوق محفوظ است.</p></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

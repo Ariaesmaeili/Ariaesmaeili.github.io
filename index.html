@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بانک وام | خرید و فروش وام</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo"><h1>🏦 بانک وام</h1></div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-btn active">صفحه اصلی</a>
+                <a href="about.html" class="nav-btn">درباره ما</a>
+                <a href="register.html" class="nav-btn">ثبت امتیاز وام</a>
+                <a href="buy.html" class="nav-btn">خرید امتیاز</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1 class="page-title">🏦 سامانه خرید و فروش وام</h1>
+        <p class="page-subtitle">لطفاً فرم مربوطه را تکمیل نمایید</p>
+
+        <div id="messageBox"></div>
+
+        <div class="dual-forms">
+
+            <div class="form-card">
+                <h2>💰 وام‌های ثبت شده (فروش وام)</h2>
+                <form onsubmit="saveForm(event, 'sale')">
+                    <div class="form-group"><label>👤 نام و نام خانوادگی</label><input type="text" id="sale-name" required></div>
+                    <div class="form-group"><label>🪪 کد ملی</label><input type="text" id="sale-national" maxlength="10" required></div>
+                    <div class="form-group"><label>📍 استان</label><input type="text" id="sale-province" required></div>
+                    <div class="form-group"><label>💵 مبلغ وام (تومان)</label><input type="number" id="sale-amount" required></div>
+                    <div class="form-group"><label>📞 شماره تماس</label><input type="text" id="sale-phone" maxlength="11" required></div>
+                    <button type="submit" class="submit-btn">ثبت اطلاعات</button>
+                </form>
+            </div>
+
+            <div class="form-card">
+                <h2>📝 وام‌های درخواستی (خرید وام)</h2>
+                <form onsubmit="saveForm(event, 'request')">
+                    <div class="form-group"><label>👤 نام و نام خانوادگی</label><input type="text" id="req-name" required></div>
+                    <div class="form-group"><label>🪪 کد ملی</label><input type="text" id="req-national" maxlength="10" required></div>
+                    <div class="form-group"><label>⏳ مدت پرداخت وام</label><input type="text" id="req-duration" placeholder="مثلاً: ۳۶ ماه" required></div>
+                    <div class="form-group"><label>📍 استان</label><input type="text" id="req-province" required></div>
+                    <div class="form-group"><label>💵 مبلغ وام (تومان)</label><input type="number" id="req-amount" required></div>
+                    <div class="form-group"><label>📞 شماره تماس</label><input type="text" id="req-phone" maxlength="11" required></div>
+                    <button type="submit" class="submit-btn">ثبت اطلاعات</button>
+                </form>
+            </div>
+                    <!-- لیست وام‌های ثبت شده -->
+            <div class="loans-list-section">
+                <h2 class="section-title-list">📋 وام‌های ثبت شده</h2>
+
+                <div class="loans-scroll-box">
+                    <div id="loansList"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-section"><h3>🏢 آدرس</h3><p>تهران، خیابان ولیعصر، برج بانک، طبقه ۱۰</p></div>
+            <div class="footer-section"><h3>📞 تماس</h3><p>تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</p><p>موبایل: ۰۹۱۲۳۴۵۶۷۸۹</p></div>
+            <div class="footer-section"><h3>⏰ ساعات کاری</h3><p>شنبه تا چهارشنبه: ۸ صبح تا ۴ بعدازظهر</p></div>
+        </div>
+        <div class="footer-bottom"><p>© ۱۴۰۳ تمامی حقوق محفوظ است.</p></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

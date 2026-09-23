@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>ورود مدیریت | بانک وام</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .login-box {
+            max-width: 380px;
+            margin: 100px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+        .login-box h1 { font-size: 24px; margin-bottom: 8px; color: #1a237e; }
+        .login-box p { color: #888; font-size: 13px; margin-bottom: 25px; }
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+            font-family: inherit;
+        }
+        .login-box input:focus { border-color: #c9a84c; outline: none; }
+        .login-box button {
+            width: 100%;
+            padding: 13px;
+            background: #1a237e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .login-box button:hover { background: #0d1557; }
+        .error { color: #c62828; margin-bottom: 15px; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <h1>🔐 ورود مدیریت</h1>
+        <p>سامانه بانک وام</p>
+        <p class="error" id="error" style="display:none;"></p>
+        <form onsubmit="doLogin(event)">
+            <input type="text" id="username" placeholder="نام کاربری" required>
+            <input type="password" id="password" placeholder="رمز عبور" required>
+            <button type="submit">ورود</button>
+        </form>
+    </div>
+
+    <script>
+        const ADMIN_USER = 'admin';
+        const ADMIN_PASS = 'admin123';
+
+        function doLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+
+            if (u === ADMIN_USER && p === ADMIN_PASS) {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                window.location.href = 'panel.html';
+            } else {
+                document.getElementById('error').textContent = '❌ نام کاربری یا رمز اشتباه است';
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>

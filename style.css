@@ -1,0 +1,315 @@
+:root {
+    --primary: #1a237e;
+    --primary-dark: #0d1557;
+    --gold: #c9a84c;
+    --gold-light: #f5e6c8;
+    --white: #ffffff;
+    --gray: #f5f5f5;
+    --text: #212121;
+    --text-light: #666;
+    --success: #2e7d32;
+    --danger: #c62828;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: var(--gray);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+.main-header {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: var(--white);
+    box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo h1 { font-size: 24px; color: var(--gold); }
+
+.nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.nav-btn {
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.nav-btn:hover, .nav-btn.active {
+    background: var(--gold);
+    color: var(--primary-dark);
+    border-color: var(--gold);
+}
+
+.main-content {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+    min-height: 60vh;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 28px;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.dual-forms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .dual-forms { grid-template-columns: 1fr; }
+}
+
+.form-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-top: 4px solid var(--primary);
+}
+
+.form-card h2 {
+    font-size: 18px;
+    color: var(--primary);
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gold-light);
+}
+
+.form-group { margin-bottom: 14px; }
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--gold);
+    outline: none;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 5px;
+}
+
+.submit-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(26,35,126,0.3);
+}
+
+.simple-page {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.simple-page h2 { color: var(--primary); margin-bottom: 15px; }
+.simple-page p { margin-bottom: 12px; color: var(--text-light); line-height: 2; }
+
+.main-footer {
+    background: var(--primary-dark);
+    color: var(--white);
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.footer-section { flex: 1; min-width: 220px; }
+
+.footer-section h3 { color: var(--gold); font-size: 16px; margin-bottom: 10px; }
+.footer-section p { font-size: 13px; color: #ccc; margin-bottom: 5px; }
+
+.footer-bottom {
+    background: #0a0e2e;
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+    color: #888;
+}
+
+.alert {
+    padding: 12px 18px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.alert-success { background: #e8f5e9; color: var(--success); border: 1px solid #a5d6a7; }
+.alert-danger { background: #ffebee; color: var(--danger); border: 1px solid #ef9a9a; }
+
+/* ========== لیست وام‌های ثبت شده ========== */
+.loans-list-section {
+    margin-top: 50px;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-top: 4px solid var(--gold);
+}
+
+.section-title-list {
+    text-align: center;
+    font-size: 20px;
+    color: var(--primary);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gold-light);
+}
+
+.loans-scroll-box {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-left: 5px;
+}
+
+.loans-scroll-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.loans-scroll-box::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+
+.loans-scroll-box::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.loans-scroll-box::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+.loan-item {
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-right: 4px solid var(--primary);
+    border-radius: 8px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+}
+
+.loan-item:hover {
+    background: #f5f5f5;
+}
+
+.loan-item .loan-info {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.loan-item .loan-info span {
+    color: var(--text-light);
+}
+
+.loan-item .loan-info strong {
+    color: var(--primary);
+}
+
+.loan-item .loan-amount {
+    font-weight: bold;
+    color: var(--success);
+    font-size: 14px;
+}
+
+.loan-item .loan-type {
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.loan-type-sale {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.loan-type-request {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.loans-empty {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+    font-size: 14px;
+}
