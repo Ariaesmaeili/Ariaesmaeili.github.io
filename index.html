@@ -26,8 +26,8 @@
 
         <div id="messageBox"></div>
 
+        <!-- دو فرم کنار هم -->
         <div class="dual-forms">
-
             <div class="form-card">
                 <h2>💰 وام‌های ثبت شده (فروش وام)</h2>
                 <form onsubmit="saveForm(event, 'sale')">
@@ -52,13 +52,13 @@
                     <button type="submit" class="submit-btn">ثبت اطلاعات</button>
                 </form>
             </div>
-                    <!-- لیست وام‌های ثبت شده -->
-            <div class="loans-list-section">
-                <h2 class="section-title-list">📋 وام‌های ثبت شده</h2>
+        </div>
 
-                <div class="loans-scroll-box">
-                    <div id="loansList"></div>
-                </div>
+        <!-- لیست وام‌های ثبت شده (بیرون از dual-forms) -->
+        <div class="loans-list-section">
+            <h2 class="section-title-list">📋 وام‌های ثبت شده</h2>
+            <div class="loans-scroll-box">
+                <div id="loansList"></div>
             </div>
         </div>
     </main>
