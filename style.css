@@ -206,12 +206,14 @@ body {
 
 /* ========== لیست وام‌های ثبت شده ========== */
 .loans-list-section {
-    margin-top: 50px;
+    margin-top: 30px;
     background: var(--white);
     border-radius: 12px;
     padding: 25px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     border-top: 4px solid var(--gold);
+    width: 100%;
+    max-width: 100%;
 }
 
 .section-title-list {
